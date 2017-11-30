@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h2>{{ the_title }}</h2>
+    {% if the_data %}
+        <table>
+         <tr>
+             {% for row_title in the_row_titles %}
+                <th>{{row_title}}</th>
+             {% endfor %}
+         </tr>
+         {% for fila in the_data %}
+             <tr>
+                 {% for f in fila %}
+                    <td>{{f}}</td>
+                 {% endfor %}
+             </tr>
+         {% endfor %}
+        </table>
+        <h3>Eliminar datos</h3>
+        <h4>Seleccione el "id" del registro que desee eliminar</h4>
+        <form action='/delete' method='POST'>
+            <select name="identificador" required >
+                <option value=""></option>
+                  {% for id in ids %}
+                      {% for i in id %}
+                  <option value="{{ i }}">{{ i }}</option>
+                          {% endfor %}
+                  {% endfor %}
+            </select>
+            <input type="submit" value="Eliminar">
+        </form>
+        {% else %}
+        <h3>No se encontraron resultados</h3>
+    {% endif %}
+    <p><a href="/entry">Regresar</a></p>
+{% endblock %}

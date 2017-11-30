@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+<h2>{{ the_title }}</h2>
+<p>Tu enviaste la siguiente información:</p>
+<table>
+<tr><td>Frase:</td><td>{{ the_phrase }}</td></tr>
+<tr><td>Letras:</td><td>{{ the_letters }}</td></tr>
+</table>
+<p>La letras "{{ the_letters }}" encontradas en "{{ the_phrase }}" son:</p>
+<h3>{{ the_result }}</h3>
+    <p><a href="/entry">Regresar</a></p>
+{% endblock %}
